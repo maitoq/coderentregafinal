@@ -1,8 +1,12 @@
-from curses.ascii import HT
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 
 # Create your views here.
 
-def saludo (request):
-    return HttpResponse ('hola')
+def jugadores (request):
+
+    diccionario = {}
+    plantilla = loader.get_template("jugadores.html")
+    documento = plantilla.render(diccionario)
+    return HttpResponse(documento)
+
