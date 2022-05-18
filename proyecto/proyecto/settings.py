@@ -55,7 +55,7 @@ ROOT_URLCONF = 'proyecto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Users/l0271969/OneDrive - Banco de Galicia Y Buenos Aires S.A/Martín/PY/Coder/coderentregafinal/proyecto/torneo/templates/torneo'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
