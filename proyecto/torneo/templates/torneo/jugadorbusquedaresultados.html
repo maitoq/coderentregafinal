@@ -1,0 +1,21 @@
+{% extends 'torneo/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <p>Estamos buscando los jugadores con apellido: {{apellido}}</p>
+    {% if jugadores %}
+
+    <ul>
+    {% for jugador in jugadores %}
+        <li>{{jugador.nombre}}</li>
+        <li>{{jugador.apellido}}</li>
+    {% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+
+{% endblock %}

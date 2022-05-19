@@ -19,7 +19,7 @@ from proyecto.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludo/', saludo),
-    path('prueba/', prueba),
+#    path('saludo/', saludo),
+#    path('prueba/', prueba),
     path('torneo/',include('torneo.urls'))
 ]
