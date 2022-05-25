@@ -39,7 +39,7 @@ def jugadoresformulario (request):
         miFormulario = JugadoresFormulario(request.POST)
         print(miFormulario)
 
-        if miFormulario.is_valid:
+        if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
             jugador = Jugadores (nombre=informacion['nombre'],apellido=informacion['apellido'],edad=informacion['edad'],equipo=informacion['equipo'])
             jugador.save()
@@ -55,7 +55,7 @@ def equiposformulario (request):
         miFormulario = EquiposFormulario(request.POST)
         print(miFormulario)
 
-        if miFormulario.is_valid:
+        if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
             equipo = Equipos (nombre=informacion['nombre'],categoria=informacion['categoria'])
             equipo.save()
@@ -64,6 +64,23 @@ def equiposformulario (request):
         miFormulario = EquiposFormulario()
     
     return render(request,'torneo/equiposformulario.html',{"miFormulario":miFormulario})
+
+def sedesformulario (request):
+    if request.method == 'POST':
+        miFormulario = SedesFormulario(request.POST)
+        print(miFormulario)
+
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+            sede = Sedes (nombre=informacion['nombre'])
+            sede.save()
+            return render(request,'torneo/inicio.html')
+    else:
+        miFormulario = SedesFormulario()
+    
+    return render(request,'torneo/sedesformulario.html',{"miFormulario":miFormulario})
+
+#----------------------------------- búsqueda ---------------------------
 
 def jugadorbusqueda (request):
     return render (request,'torneo/jugadorbusqueda.html')

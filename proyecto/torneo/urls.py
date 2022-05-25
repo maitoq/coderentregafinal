@@ -8,6 +8,7 @@ urlpatterns = [
     path('sedes/', sedes),
     path('jugadoresformulario/', jugadoresformulario), 
     path('equiposformulario/', equiposformulario), 
+    path('sedesformulario/', sedesformulario),
     path('jugadorbusqueda/', jugadorbusqueda), 
     path('buscar/', buscar),
 #    path('jugadorbusquedaresultados/', jugadorbusqueda),
