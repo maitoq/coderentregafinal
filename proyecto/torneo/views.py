@@ -13,6 +13,48 @@ def inicio (request):
     documento = plantilla.render(diccionario)
     return HttpResponse(documento)
 
+def about (request):
+
+    diccionario = {}
+    plantilla = loader.get_template("about.html")
+    documento = plantilla.render(diccionario)
+    return HttpResponse(documento)
+
+def comentarios (request):
+
+    diccionario = {}
+    plantilla = loader.get_template("comentarios.html")
+    documento = plantilla.render(diccionario)
+    return HttpResponse(documento)
+
+def contact (request):
+
+    diccionario = {}
+    plantilla = loader.get_template("sinpagina.html")
+    documento = plantilla.render(diccionario)
+    return HttpResponse(documento)
+
+def termsofuse (request):
+
+    diccionario = {}
+    plantilla = loader.get_template("sinpagina.html")
+    documento = plantilla.render(diccionario)
+    return HttpResponse(documento)
+
+def privacypolicy (request):
+
+    diccionario = {}
+    plantilla = loader.get_template("sinpagina.html")
+    documento = plantilla.render(diccionario)
+    return HttpResponse(documento)
+
+def enconstruccion (request):
+
+    diccionario = {}
+    plantilla = loader.get_template("sinpagina.html")
+    documento = plantilla.render(diccionario)
+    return HttpResponse(documento)
+
 def jugadores (request):
     diccionario = {}
     plantilla = loader.get_template("jugadores.html")
@@ -95,3 +137,13 @@ def buscar (request):
         respuesta = "sin datos"
     
     return HttpResponse(respuesta)
+
+def listacomentarios (request):
+    comentarios = Comentario.objects.all()
+    return render(request,'torneo/listacomentarios.html',{"comentarios":comentarios})
+
+#def listacomentarios (request):
+#    diccionario = {Comentario.objects.all()}
+#    plantilla = loader.get_template("listacomentarios.html")
+#    documento = plantilla.render(diccionario)
+#    return HttpResponse(documento)

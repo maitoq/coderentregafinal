@@ -1,0 +1,25 @@
+{% extends 'torneo/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    <br>
+    <p>Lista de comentarios sobre los partidos más resonantes</p>
+    
+    <ul>
+    {% for comentario in comentarios %}
+        <li><h5>{{comentario.titulo}}</h5></li>
+        <li>{{comentario.subtitulo}}</li>
+        <li>Autor: {{comentario.autor}}</li>
+        <li>{{comentario.fecha}}</li>
+        <li class="list-inline-item"><a href="/torneo/about">Leer</a></li>
+        <br>
+        <br>
+        
+    {% endfor %}
+
+    </ul>
+
+    
+
+{% endblock %}
