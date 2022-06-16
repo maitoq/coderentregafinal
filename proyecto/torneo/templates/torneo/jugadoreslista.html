@@ -1,0 +1,28 @@
+{% extends 'torneo/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Lista de Jugadores</h1>
+<br>
+<ul>
+    <a href="{% url 'New' %}">Crear Jugador</a>
+    
+    {% for jugador in object_list %}
+        <li>
+            <p><h5>{{ jugador.apellido }}</h5></p>
+            <p><h6>{{ jugador.nombre }}</h6></p>
+            <p>
+                <a href="{% url 'Detail' jugador.id %}">Ver</a>
+                <a href="{% url 'Edit' jugador.id %}">Editar</a>
+                <a href="{% url 'Delete' jugador.id %}">Borrar</a>
+            </p>
+            <br>
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

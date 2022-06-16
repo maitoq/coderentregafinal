@@ -1,0 +1,30 @@
+{% extends 'torneo/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Lista de Comentarios</h1>
+<br>
+<ul>
+    <a href="{% url 'New' %}">Crear Comentario</a>
+    
+    {% for comentario in object_list %}
+        <li>
+            <p><h5>{{ comentario.titulo }}</h5></p>
+            <p><h6>{{ comentario.subtitulo }}</h6></p>
+            <p>Autor: {{ comentario.autor }}</p>
+            <p>{{ comentario.fecha }}</p>
+            <p>
+                <a href="{% url 'Detail' comentario.id %}">Ver</a>
+                <a href="{% url 'Edit' comentario.id %}">Editar</a>
+                <a href="{% url 'Delete' comentario.id %}">Borrar</a>
+            </p>
+            <br>
+        </li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}

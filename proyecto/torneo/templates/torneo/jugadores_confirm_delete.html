@@ -1,0 +1,14 @@
+{% extends 'torneo/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+
+<form method="post">{% csrf_token %}
+    
+    ¿Estás seguro que deseas borrar el curso "{{ object }}"
+    <input type="submit" value="Sí, estoy seguro">
+</form>
+
+{% endblock %}

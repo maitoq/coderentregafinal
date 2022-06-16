@@ -1,3 +1,4 @@
+from ast import Del
 from django.http import HttpResponse
 from django.template import loader
 from torneo.forms import *
@@ -138,12 +139,62 @@ def buscar (request):
     
     return HttpResponse(respuesta)
 
+#--------------------------------------------------------------------
 def listacomentarios (request):
     comentarios = Comentario.objects.all()
     return render(request,'torneo/listacomentarios.html',{"comentarios":comentarios})
 
-#def listacomentarios (request):
-#    diccionario = {Comentario.objects.all()}
-#    plantilla = loader.get_template("listacomentarios.html")
-#    documento = plantilla.render(diccionario)
-#    return HttpResponse(documento)
+#-------------------------------------------------------------------
+#CRUD con clases basadas en vistas
+#comentarios
+
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+class ComentarioList (ListView):
+    model = Comentario
+    template_name = 'torneo/comentarioslista.html'
+
+class ComentarioDetalle (DetailView):
+    model = Comentario
+    template_name = 'torneo/comentariosdetalle.html'
+
+class ComentarioCreacion (CreateView):
+    model = Comentario
+    success_url = '/torneo/comentarios/lista/'
+    fields = ['titulo','subtitulo','cuerpo','autor','fecha']
+
+class ComentarioUpdate (UpdateView):
+    model = Comentario
+    success_url = '/torneo/comentarios/lista/'
+    fields = ['titulo','subtitulo','cuerpo','autor','fecha']    
+
+class ComentarioDelete (DeleteView):
+    model = Comentario
+    success_url = '/torneo/comentarios/lista/'
+
+#jugadores
+
+class JugadoresList (ListView):
+    model = Jugadores
+    template_name = 'torneo/jugadoreslista.html'
+
+class JugadoresDetalle (DetailView):
+    model = Jugadores
+    template_name = 'torneo/jugadoresdetalle.html'
+
+class JugadoresCreacion (CreateView):
+    model = Jugadores
+    success_url = '/torneo/Jugadores/lista/'
+    fields = ['nombre','apellido','edad','equipo']
+
+class JugadoresUpdate (UpdateView):
+    model = Jugadores
+    success_url = '/torneo/Jugadores/lista/'
+    fields = ['nombre','apellido','edad','equipo']
+
+class JugadoresDelete (DeleteView):
+    model = Jugadores
+    success_url = '/torneo/Jugadores/lista/'

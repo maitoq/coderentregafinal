@@ -1,0 +1,20 @@
+{% extends 'torneo/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<p><h5>{{ comentario.titulo }}</h5></p>
+<p><h6>{{ comentario.subtitulo }}</h6></p>
+<p>{{ comentario.cuerpo }}</p>
+<p>Autor: {{ comentario.autor }}</p>
+<p>{{ comentario.fecha }}</p>
+
+
+
+<p>
+    <a href="{% url 'List' %}">Regresar</a>
+    
+</p>
+
+{% endblock %}
